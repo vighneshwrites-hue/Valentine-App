@@ -1,4 +1,5 @@
 import { useState } from "react";
+import confetti from "canvas-confetti";
 import { motion } from "framer-motion";
 
 export default function ValentineApp() {
@@ -50,7 +51,14 @@ export default function ValentineApp() {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 style={{ scale: yesScale }}
-                onClick={() => setAnswered(true)}
+                onClick={() => {
+                  confetti({
+                    particleCount: 150,
+                    spread: 80,
+                    origin: { y: 0.6 },
+                  });
+                  setAnswered(true);
+                }}
                 className="px-6 py-3 bg-pink-500 text-white rounded-xl shadow-lg"
               >
                 Yes 💕
